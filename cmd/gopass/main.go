@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 
@@ -8,12 +9,15 @@ import (
 )
 
 func main() {
-	password, err := generator.Generate(16)
+	length := flag.Int("length", 16, "password length")
+	flag.Parse()
+
+	password, err := generator.Generate(*length)
 
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Error:", err)
 		os.Exit(1)
 	}
 
-	fmt.Println("Generated password:", password)
+	fmt.Println(password)
 }

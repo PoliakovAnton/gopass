@@ -2,12 +2,17 @@ package generator
 
 import (
 	"crypto/rand"
+	"errors"
 	"math/big"
 )
 
 const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 func Generate(length int) (string, error) {
+	if length <= 0 {
+		return "", errors.New("password length must be greater than 0")
+	}
+
 	password := make([]byte, length)
 
 	max := big.NewInt(int64(len(characters)))
