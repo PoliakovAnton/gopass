@@ -1,0 +1,14 @@
+# Go build artifacts
+/bin/
+/dist/
+
+# IDE
+.vscode/
+
+# macOS
+.DS_Store
+
+# Binaries
+*.exe
+*.out
+*.app
